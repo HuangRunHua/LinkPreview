@@ -13,6 +13,7 @@
 		A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */; };
 		A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F029EFC5D300D12BDD /* TestView.swift */; };
 		A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */; };
+		A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F429F00E5500D12BDD /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDataFetcher.swift; sourceTree = "<group>"; };
 		A90F06F029EFC5D300D12BDD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewView.swift; sourceTree = "<group>"; };
+		A90F06F429F00E5500D12BDD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				A90F06F029EFC5D300D12BDD /* TestView.swift */,
 				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
 				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
+				A90F06F429F00E5500D12BDD /* ColorExtension.swift */,
 				A90F06E329EFBE7400D12BDD /* Assets.xcassets */,
 				A90F06E529EFBE7400D12BDD /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,
 				A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */,
+				A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

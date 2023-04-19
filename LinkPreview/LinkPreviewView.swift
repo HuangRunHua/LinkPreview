@@ -20,7 +20,7 @@ struct LinkPreviewView: View {
     
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 0) {
             if let linkImage = linkImage, let imageWidth = imageWidth, let imageHeight = imageHeight {
                 AsyncImage(url: URL(string: linkImage)) { phase in
                     switch phase {
@@ -28,7 +28,6 @@ struct LinkPreviewView: View {
                         image
                             .resizable()
                             .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
-//                            .padding(.bottom)
                     case .empty, .failure:
                         Rectangle()
                             .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
@@ -38,13 +37,25 @@ struct LinkPreviewView: View {
                     }
                 }
             }
-            if let linkTitle {
-                Text(linkTitle)
+            VStack(alignment: .leading, spacing: 10) {
+                if let linkTitle {
+                    Text(linkTitle)
+                        .lineLimit(1)
+                        .padding([.leading, .trailing])
+                }
+                if let linkDescription {
+                    Text(linkDescription)
+                        .foregroundColor(.descriptionFontColor)
+                        .padding([.leading, .trailing])
+                        .lineLimit(2)
+                }
             }
-            if let linkDescription {
-                Text(linkDescription)
-            }
+            .padding([.top, .bottom])
+            .background(Color.linkBackgroundColor)
+            
         }
+        .border(Color.boundColor)
+        .cornerRadius(10)
         .padding()
         .onAppear {
             linkDataFetcher.fetchLinkData(completionBlock: { title, imageURL, description, imageWidth, imageHeight in
