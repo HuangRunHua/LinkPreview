@@ -26,7 +26,7 @@ struct TestView: View {
         
     var body: some View {
         ScrollView {
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[0])
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[0]) 
             LinkPreviewView(linkDataFetcher: linkDataFetchers[1])
             LinkPreviewView(linkDataFetcher: linkDataFetchers[2])
             LinkPreviewView(linkDataFetcher: linkDataFetchers[3])
