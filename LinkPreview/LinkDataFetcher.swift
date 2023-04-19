@@ -26,18 +26,14 @@ class LinkDataFetcher {
                             print(content)
                             var title: String? = nil
                             if let linkTitle = content.matchURLContent(match: "<meta property=\"og:title\" content=\"") {
-                                print("linkTitle = ", linkTitle)
-//                                title = String(linkTitle.dropLast(2))
                                 title = String(linkTitle)
                             }
                             var imageURL: String? = nil
                             if let linkImage = content.matchURLContent(match: "<meta property=\"og:image\" content=\"") {
-//                                imageURL = String(linkImage.dropLast(2))
                                 imageURL = String(linkImage)
                             }
                             var description: String? = nil
                             if let linkDescription = content.matchURLContent(match: "<meta property=\"og:description\" content=\"") {
-//                                description = String(linkDescription.dropLast(2))
                                 description = String(linkDescription)
                             }
                             completionBlock(title, imageURL, description)
@@ -65,8 +61,29 @@ extension String {
                 content += String(self[self.index(linkTitleRange.upperBound, offsetBy: endIndexCount)])
                 endIndexCount += 1
             }
-            return content
+            if let matchedIndex = content.findLastIndex(match: "\"") {
+                return String(content.dropLast(matchedIndex+1))
+            }
         }
         return nil
+    }
+    
+    public func findLastIndex(match char: String) -> Int? {
+        var matchedIndex: Int = 0
+        var foundMatchedIndex: Bool = false
+        for i in self.reversed() {
+            if String(i) == char {
+                foundMatchedIndex = true
+                break
+            } else {
+                matchedIndex += 1
+            }
+        }
+        
+        if foundMatchedIndex {
+            return matchedIndex
+        } else {
+            return nil
+        }
     }
 }
