@@ -13,7 +13,8 @@ struct TestView: View {
         LinkDataFetcher(link: "https://www.economist.com/special-report/2023/04/14/all-change"),
         LinkDataFetcher(link: "https://www.newscientist.com/article/mg25834340-300-how-i-found-a-new-home-online-at-mastodon-after-giving-up-on-twitter/?utm_term=Autofeed&utm_campaign=echobox&utm_medium=social&utm_source=Twitter#Echobox=1681858978"),
         LinkDataFetcher(link: "https://www.bloomberg.com/news/articles/2023-04-17/chatgpt-can-decode-fed-speak-predict-stock-moves-from-headlines?cmpid=socialflow-twitter-business&utm_campaign=socialflow-organic&utm_content=business&utm_medium=social&utm_source=twitter"),
-        LinkDataFetcher(link: "https://www.apple.com.cn")
+        LinkDataFetcher(link: "https://www.apple.com.cn"),
+        LinkDataFetcher(link: "https://www.nytimes.com/2023/04/19/world/asia/india-china-population.html")
     ]
     
         
@@ -29,6 +30,7 @@ struct TestView: View {
             LinkPreviewView(linkDataFetcher: linkDataFetchers[1])
             LinkPreviewView(linkDataFetcher: linkDataFetchers[2])
             LinkPreviewView(linkDataFetcher: linkDataFetchers[3])
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[4])
         }
     }
 }

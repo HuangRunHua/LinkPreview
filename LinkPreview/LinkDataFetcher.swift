@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ImageIO
 
 
 class LinkDataFetcher {
@@ -15,7 +16,7 @@ class LinkDataFetcher {
         self.link = link
     }
     
-    func fetchLinkData(completionBlock: @escaping (String?, String?, String?) -> Void) {
+    func fetchLinkData(completionBlock: @escaping (String?, String?, String?, Double?, Double?) -> Void) {
         if let url = URL(string: self.link) {
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 if let error {
@@ -23,20 +24,31 @@ class LinkDataFetcher {
                 } else {
                     if let data = data {
                         if let content = String(data: data, encoding: .utf8) {
-                            print(content)
                             var title: String? = nil
-                            if let linkTitle = content.matchURLContent(match: "<meta property=\"og:title\" content=\"") {
+                            if let linkTitle = content.matchURLContent(match: "property=\"og:title\" content=\"") {
                                 title = String(linkTitle)
                             }
-                            var imageURL: String? = nil
-                            if let linkImage = content.matchURLContent(match: "<meta property=\"og:image\" content=\"") {
-                                imageURL = String(linkImage)
+                            var imageURLPath: String? = nil
+                            var imageWidth: Double? = nil
+                            var imageHeight: Double? = nil
+                            if let linkImage = content.matchURLContent(match: "property=\"og:image\" content=\"") {
+                                imageURLPath = String(linkImage)
+                                if let imageURLPath = imageURLPath {
+                                    if let imageURL = URL(string: imageURLPath) {
+                                        if let imageSize = self.sizeOfImage(at: imageURL) {
+                                            imageWidth = imageSize.width
+                                            imageHeight = imageSize.height
+                                            print(imageSize.width)
+                                            print(imageSize.height)
+                                        }
+                                    }
+                                }
                             }
                             var description: String? = nil
-                            if let linkDescription = content.matchURLContent(match: "<meta property=\"og:description\" content=\"") {
+                            if let linkDescription = content.matchURLContent(match: "property=\"og:description\" content=\"") {
                                 description = String(linkDescription)
                             }
-                            completionBlock(title, imageURL, description)
+                            completionBlock(title, imageURLPath, description, imageWidth, imageHeight)
                         } else {
                             print("No Content Found")
                         }
@@ -48,6 +60,25 @@ class LinkDataFetcher {
             task.resume()
         } else {
             print("Invalid link")
+        }
+    }
+    
+    private func sizeOfImage(at url: URL) -> CGSize? {
+        // with CGImageSource we avoid loading the whole image into memory
+        guard let source = CGImageSourceCreateWithURL(url as CFURL, nil) else {
+            return nil
+        }
+        
+        let propertiesOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+        guard let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, propertiesOptions) as? [CFString: Any] else {
+            return nil
+        }
+        
+        if let width = properties[kCGImagePropertyPixelWidth] as? CGFloat,
+           let height = properties[kCGImagePropertyPixelHeight] as? CGFloat {
+            return CGSize(width: width, height: height)
+        } else {
+            return nil
         }
     }
 }
