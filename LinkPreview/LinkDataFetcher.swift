@@ -38,8 +38,6 @@ class LinkDataFetcher {
                                         if let imageSize = self.sizeOfImage(at: imageURL) {
                                             imageWidth = imageSize.width
                                             imageHeight = imageSize.height
-                                            print(imageSize.width)
-                                            print(imageSize.height)
                                         }
                                     }
                                 }

@@ -28,7 +28,7 @@ struct LinkPreviewView: View {
                         image
                             .resizable()
                             .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
-                            .padding(.bottom)
+//                            .padding(.bottom)
                     case .empty, .failure:
                         Rectangle()
                             .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
@@ -60,6 +60,6 @@ struct LinkPreviewView: View {
 
 struct LinkPreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        LinkPreviewView(linkDataFetcher: LinkDataFetcher(link: "https://www.newscientist.com/article/mg25834340-300-how-i-found-a-new-home-online-at-mastodon-after-giving-up-on-twitter/?utm_term=Autofeed&utm_campaign=echobox&utm_medium=social&utm_source=Twitter#Echobox=1681858978"))
+        LinkPreviewView(linkDataFetcher: LinkDataFetcher(link: "https://www.economist.com/leaders/2023/04/13/the-lessons-from-americas-astonishing-economic-record"))
     }
 }
