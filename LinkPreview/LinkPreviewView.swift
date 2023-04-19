@@ -37,8 +37,11 @@ struct LinkPreviewView: View {
                     }
                 }
             }
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 0) {
                 if let linkTitle {
+                    Divider()
+                        .foregroundColor(.black)
+                        .padding(.top, -16)
                     Text(linkTitle)
                         .lineLimit(1)
                         .padding([.leading, .trailing])
@@ -54,7 +57,10 @@ struct LinkPreviewView: View {
             .background(Color.linkBackgroundColor)
             
         }
-        .border(Color.boundColor)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.boundColor, lineWidth: 2)
+        )
         .cornerRadius(10)
         .padding()
         .onAppear {
