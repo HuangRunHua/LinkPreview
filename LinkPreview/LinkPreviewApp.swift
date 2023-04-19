@@ -11,7 +11,8 @@ import SwiftUI
 struct LinkPreviewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TestView()
         }
     }
 }

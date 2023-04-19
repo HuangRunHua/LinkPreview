@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */; };
-		A90F06E229EFBE7300D12BDD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06E129EFBE7300D12BDD /* ContentView.swift */; };
 		A90F06E429EFBE7400D12BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90F06E329EFBE7400D12BDD /* Assets.xcassets */; };
 		A90F06E729EFBE7400D12BDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90F06E629EFBE7400D12BDD /* Preview Assets.xcassets */; };
+		A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */; };
+		A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F029EFC5D300D12BDD /* TestView.swift */; };
+		A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A90F06DC29EFBE7300D12BDD /* LinkPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewApp.swift; sourceTree = "<group>"; };
-		A90F06E129EFBE7300D12BDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A90F06E329EFBE7400D12BDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A90F06E629EFBE7400D12BDD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkPreview.entitlements; sourceTree = "<group>"; };
+		A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDataFetcher.swift; sourceTree = "<group>"; };
+		A90F06F029EFC5D300D12BDD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +56,11 @@
 		A90F06DE29EFBE7300D12BDD /* LinkPreview */ = {
 			isa = PBXGroup;
 			children = (
+				A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */,
 				A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */,
-				A90F06E129EFBE7300D12BDD /* ContentView.swift */,
+				A90F06F029EFC5D300D12BDD /* TestView.swift */,
+				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
+				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
 				A90F06E329EFBE7400D12BDD /* Assets.xcassets */,
 				A90F06E529EFBE7400D12BDD /* Preview Content */,
 			);
@@ -137,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90F06E229EFBE7300D12BDD /* ContentView.swift in Sources */,
+				A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */,
+				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,
+				A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +274,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LinkPreview/LinkPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkPreview/Preview Content\"";
@@ -275,6 +286,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +305,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LinkPreview/LinkPreview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkPreview/Preview Content\"";
@@ -304,6 +317,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
