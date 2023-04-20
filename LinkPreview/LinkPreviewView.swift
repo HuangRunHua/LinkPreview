@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LinkPreviewView: View {
+    
     let linkDataFetcher: LinkDataFetcher
     
         
@@ -18,8 +19,75 @@ struct LinkPreviewView: View {
     @State private var imageHeight: Double? = nil
     @State private var publisher: String? = nil
     
+    // - Parameters:
+    //  - original link
+    //  - link publisher
+    //  - link title
+    //  - link description
+    //  - link image
+    var tapAction: ((_ link: String,
+                     _ publisher: String?,
+                     _ linkTitle: String?,
+                     _ linkDescription: String?,
+                     _ linkImage: String?) -> Void)?
+    
+    init(linkDataFetcher: LinkDataFetcher,
+         linkTitle: String? = nil,
+         linkImage: String? = nil,
+         linkDescription: String? = nil,
+         imageWidth: Double? = nil,
+         imageHeight: Double? = nil,
+         publisher: String? = nil,
+         tapAction: (@escaping (_ link: String,
+                                _ publisher: String?,
+                                _ linkTitle: String?,
+                                _ linkDescription: String?,
+                                _ linkImage: String?) -> Void)) {
+        self.linkDataFetcher = linkDataFetcher
+        self.linkTitle = linkTitle
+        self.linkImage = linkImage
+        self.linkDescription = linkDescription
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        self.publisher = publisher
+        self.tapAction = tapAction
+    }
+    
+    init(linkDataFetcher: LinkDataFetcher, linkTitle: String? = nil, linkImage: String? = nil, linkDescription: String? = nil, imageWidth: Double? = nil, imageHeight: Double? = nil, publisher: String? = nil) {
+        self.linkDataFetcher = linkDataFetcher
+        self.linkTitle = linkTitle
+        self.linkImage = linkImage
+        self.linkDescription = linkDescription
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        self.publisher = publisher
+    }
+    
+    init(linkDataFetcher: LinkDataFetcher,
+         linkTitle: String? = nil,
+         linkImage: String? = nil,
+         linkDescription: String? = nil,
+         imageWidth: Double? = nil,
+         imageHeight: Double? = nil,
+         publisher: String? = nil,
+         tapAction: ((_ link: String,
+                                _ publisher: String?,
+                                _ linkTitle: String?,
+                                _ linkDescription: String?,
+                                _ linkImage: String?) -> Void)?) {
+        self.linkDataFetcher = linkDataFetcher
+        self.linkTitle = linkTitle
+        self.linkImage = linkImage
+        self.linkDescription = linkDescription
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        self.publisher = publisher
+        self.tapAction = tapAction
+    }
+    
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 0) {
             if let linkImage = linkImage, let imageWidth = imageWidth, let imageHeight = imageHeight {
                 AsyncImage(url: URL(string: linkImage)) { phase in
@@ -63,14 +131,16 @@ struct LinkPreviewView: View {
                         .lineLimit(2)
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.bottom])
             .padding(.top, 10)
             .background(Color.linkBackgroundColor)
             
         }
+        .frame(maxWidth: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.boundColor, lineWidth: 2)
+                .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil))  ? 2: 0)
         )
         .cornerRadius(10)
         .padding()
@@ -83,6 +153,11 @@ struct LinkPreviewView: View {
                 self.imageWidth = imageWidth
                 self.imageHeight = imageHeight
             })
+        }
+        .onTapGesture {
+            if let tapAction {
+                tapAction(linkDataFetcher.link, publisher, linkTitle, linkDescription, linkImage)
+            }
         }
     }
 }

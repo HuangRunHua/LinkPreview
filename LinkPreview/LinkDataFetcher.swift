@@ -24,7 +24,6 @@ class LinkDataFetcher {
                 } else {
                     if let data = data {
                         if let content = String(data: data, encoding: .utf8) {
-                            print(content)
                             var publisher: String? = nil
                             if let linkPublisher = self.link.findPublisher() {
                                 publisher = linkPublisher
