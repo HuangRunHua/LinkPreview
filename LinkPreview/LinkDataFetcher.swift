@@ -8,8 +8,7 @@
 import Foundation
 import ImageIO
 
-
-class LinkDataFetcher {
+public class LinkDataFetcher {
     let link: String
     
     init(link: String) {

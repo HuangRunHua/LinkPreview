@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LinkPreviewView: View {
+public struct LinkPreviewView: View {
     
     let linkDataFetcher: LinkDataFetcher
     
@@ -86,7 +86,7 @@ struct LinkPreviewView: View {
     }
     
     
-    var body: some View {
+    public var body: some View {
         
         VStack(alignment: .leading, spacing: 0) {
             if let linkImage = linkImage, let imageWidth = imageWidth, let imageHeight = imageHeight {
