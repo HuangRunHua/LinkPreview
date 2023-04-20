@@ -12,11 +12,11 @@ struct LinkPreviewView: View {
     
         
     @State private var linkTitle: String? = nil
-    @State private var linkContent = ""
     @State private var linkImage: String? = nil
     @State private var linkDescription: String? = nil
     @State private var imageWidth: Double? = nil
     @State private var imageHeight: Double? = nil
+    @State private var publisher: String? = nil
     
     
     var body: some View {
