@@ -16,7 +16,7 @@ class LinkDataFetcher {
         self.link = link
     }
     
-    func fetchLinkData(completionBlock: @escaping (String?, String?, String?, Double?, Double?) -> Void) {
+    func fetchLinkData(completionBlock: @escaping (String?, String?, String?, String?, Double?, Double?) -> Void) {
         if let url = URL(string: self.link) {
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 if let error {
@@ -24,6 +24,12 @@ class LinkDataFetcher {
                 } else {
                     if let data = data {
                         if let content = String(data: data, encoding: .utf8) {
+                            
+                            var publisher: String? = nil
+                            if let linkPublisher = self.link.findPublisher() {
+                                publisher = linkPublisher
+                            }
+                            
                             var title: String? = nil
                             if let linkTitle = content.matchURLContent(match: "property=\"og:title\" content=\"") {
                                 title = String(linkTitle)
@@ -46,7 +52,7 @@ class LinkDataFetcher {
                             if let linkDescription = content.matchURLContent(match: "property=\"og:description\" content=\"") {
                                 description = String(linkDescription)
                             }
-                            completionBlock(title, imageURLPath, description, imageWidth, imageHeight)
+                            completionBlock(publisher, title, imageURLPath, description, imageWidth, imageHeight)
                         } else {
                             print("No Content Found")
                         }
@@ -114,5 +120,16 @@ extension String {
         } else {
             return nil
         }
+    }
+    public func findPublisher() -> String? {
+        // Here we assume the link would be like:
+        //  1. http(s)://publisher.com/xxxxxx
+        //  2. http(s)://publisher.com
+        if let colonIndex = self.firstIndex(of: ":") {
+            var subLink = self[self.index(colonIndex, offsetBy: 3)..<endIndex]
+            print(subLink)
+        }
+        
+        return nil
     }
 }

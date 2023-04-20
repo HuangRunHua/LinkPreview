@@ -36,12 +36,17 @@ struct LinkPreviewView: View {
                         EmptyView()
                     }
                 }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 0) 
+                        .stroke(Color.boundColor, lineWidth: 2)
+                )
             }
             VStack(alignment: .leading, spacing: 0) {
                 if let linkTitle {
-                    Divider()
-                        .foregroundColor(.black)
-                        .padding(.top, -16)
+//                    Divider()
+//                        .frame(height: 10)
+//                        .foregroundColor(.black)
+//                        .padding(.top, -21)
                     Text(linkTitle)
                         .lineLimit(1)
                         .padding([.leading, .trailing])
@@ -64,7 +69,7 @@ struct LinkPreviewView: View {
         .cornerRadius(10)
         .padding()
         .onAppear {
-            linkDataFetcher.fetchLinkData(completionBlock: { title, imageURL, description, imageWidth, imageHeight in
+            linkDataFetcher.fetchLinkData(completionBlock: { publisher, title, imageURL, description, imageWidth, imageHeight in
                 self.linkTitle = title
                 self.linkImage = imageURL
                 self.linkDescription = description
