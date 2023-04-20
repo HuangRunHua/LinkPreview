@@ -24,7 +24,7 @@ class LinkDataFetcher {
                 } else {
                     if let data = data {
                         if let content = String(data: data, encoding: .utf8) {
-                            
+                            print(content)
                             var publisher: String? = nil
                             if let linkPublisher = self.link.findPublisher() {
                                 publisher = linkPublisher
@@ -123,13 +123,30 @@ extension String {
     }
     public func findPublisher() -> String? {
         // Here we assume the link would be like:
-        //  1. http(s)://publisher.com/xxxxxx
-        //  2. http(s)://publisher.com
+        //  1. http(s)://(www.)publisher.com/xxxxxx
+        //  2. http(s)://(www.)publisher.com
         if let colonIndex = self.firstIndex(of: ":") {
-            var subLink = self[self.index(colonIndex, offsetBy: 3)..<endIndex]
-            print(subLink)
+            let subLink = self[self.index(colonIndex, offsetBy: 3)..<endIndex]
+            // For links that contain `www.` we eliminate the prefix.
+            if subLink.starts(with: "www.") {
+                if let firstDotIndex = subLink.firstIndex(of: ".") {
+                    if let firstSlashIndex = subLink.firstIndex(of: "/") {
+                        return String(subLink[subLink.index(firstDotIndex, offsetBy: 1)..<firstSlashIndex])
+                    } else {
+                        return String(subLink[subLink.index(firstDotIndex, offsetBy: 1)..<subLink.endIndex])
+                    }
+                }
+            } else {
+                if let firstSlashIndex = subLink.firstIndex(of: "/") {
+                    return String(subLink[subLink.startIndex..<firstSlashIndex])
+                } else {
+                    return String(subLink)
+                }
+            }
         }
         
         return nil
     }
+    
+    
 }

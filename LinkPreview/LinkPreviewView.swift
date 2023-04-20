@@ -37,16 +37,21 @@ struct LinkPreviewView: View {
                     }
                 }
                 .overlay(
-                    RoundedRectangle(cornerRadius: 0) 
+                    RoundedRectangle(cornerRadius: 0)
                         .stroke(Color.boundColor, lineWidth: 2)
                 )
             }
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 5) {
+                
+                if let publisher {
+                    Text(publisher)
+                        .lineLimit(1)
+                        .padding([.leading, .trailing])
+                        .font(.system(size: 17))
+                        .foregroundColor(.descriptionFontColor)
+                }
+                
                 if let linkTitle {
-//                    Divider()
-//                        .frame(height: 10)
-//                        .foregroundColor(.black)
-//                        .padding(.top, -21)
                     Text(linkTitle)
                         .lineLimit(1)
                         .padding([.leading, .trailing])
@@ -58,7 +63,8 @@ struct LinkPreviewView: View {
                         .lineLimit(2)
                 }
             }
-            .padding([.top, .bottom])
+            .padding([.bottom])
+            .padding(.top, 10)
             .background(Color.linkBackgroundColor)
             
         }
@@ -70,6 +76,7 @@ struct LinkPreviewView: View {
         .padding()
         .onAppear {
             linkDataFetcher.fetchLinkData(completionBlock: { publisher, title, imageURL, description, imageWidth, imageHeight in
+                self.publisher = publisher
                 self.linkTitle = title
                 self.linkImage = imageURL
                 self.linkDescription = description
@@ -82,6 +89,6 @@ struct LinkPreviewView: View {
 
 struct LinkPreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        LinkPreviewView(linkDataFetcher: LinkDataFetcher(link: "https://www.economist.com/leaders/2023/04/13/the-lessons-from-americas-astonishing-economic-record"))
+        LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://www.economist.com/leaders/2023/04/13/the-lessons-from-americas-astonishing-economic-record"))
     }
 }
