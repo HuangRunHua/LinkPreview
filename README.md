@@ -51,7 +51,7 @@ LinkPreviewView(linkDataFetcher: ldf, tapAction: tapAction(link:publisher:linkTi
 `tapAction` decides what action should be implemented when someone tap the link view. You can also write in the following way:
 
 ```swift
-LinkPreviewView(linkDataFetcher: linkDataFetchers[5]) { link, publisher, linkTitle, linkDescription, linkImage in
+LinkPreviewView(linkDataFetcher: ldf) { link, publisher, linkTitle, linkDescription, linkImage in
 	if let linkDescription {
 			print(linkDescription)
 		}
