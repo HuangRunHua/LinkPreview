@@ -14,6 +14,7 @@
 		A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F029EFC5D300D12BDD /* TestView.swift */; };
 		A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */; };
 		A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F429F00E5500D12BDD /* ColorExtension.swift */; };
+		A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A90F06F029EFC5D300D12BDD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewView.swift; sourceTree = "<group>"; };
 		A90F06F429F00E5500D12BDD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */,
 				A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */,
 				A90F06F029EFC5D300D12BDD /* TestView.swift */,
+				A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */,
 				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
 				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
 				A90F06F429F00E5500D12BDD /* ColorExtension.swift */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */,
 				A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */,
 				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,
