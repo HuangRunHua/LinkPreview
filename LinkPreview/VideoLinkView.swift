@@ -11,14 +11,16 @@ import UIKit
 
 struct VideoLinkView: View {
     
-//    private let demoVideoLink: String = "https://cdn3.dora-video.cn/0bc3giaaaaaa4uakmycek5sfamwdaazaaaaa.f0.mp4"
+    private let demoVideoLink: String = "https://cdn3.dora-video.cn/0bc3giaaaaaa4uakmycek5sfamwdaazaaaaa.f0.mp4"
     
-    private let demoVideoLink: String = "https://github.com/HuangRunHua/Mac-Charge-Monitor/raw/main/Mac%20Charge%20Monitor/Resources/macbookair.mov"
+//    private let demoVideoLink: String = "https://github.com/HuangRunHua/Mac-Charge-Monitor/raw/main/Mac%20Charge%20Monitor/Resources/macbookair.mov"
     
     @State private var videoResolution: CGFloat? = nil
     @State private var linkTitle: String? = nil
     @State private var linkDescription: String? = nil
     @State private var publisher: String? = nil
+    @State private var showPlayButton: Bool = true
+    @State private var isVideoPlaying: Bool = false
     
     private var player: AVPlayer? {
         if let videoURL = URL(string: demoVideoLink) {
@@ -30,23 +32,38 @@ struct VideoLinkView: View {
     var body: some View {
         VStack {
             if let videoResolution, let player {
-                AVPlayerControllerRepresented(player: player)
-                    .onAppear {
-                        player.seek(to: CMTimeMakeWithSeconds(0.7, preferredTimescale: 1000))
-                    }
-                    .aspectRatio(videoResolution, contentMode: .fit)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 0)
-                            .stroke(Color.boundColor, lineWidth: 2)
-                    )
+                ZStack(alignment: .bottomTrailing) {
+                    VideoPlayer(player: player)
+                }
+                .onAppear {
+                    player.seek(to: CMTimeMakeWithSeconds(0.7, preferredTimescale: 1000))
+                }
+                .aspectRatio(videoResolution, contentMode: .fit)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 0)
+                        .stroke(Color.boundColor, lineWidth: 2)
+                )
             }
             VStack(alignment: .leading, spacing: 5) {
-                if let publisher {
-                    Text(publisher)
+                HStack {
+                    if let publisher {
+                        Text(publisher)
+                            .lineLimit(1)
+                            .padding([.leading, .trailing])
+                            .font(.system(size: 17))
+                            .foregroundColor(.descriptionFontColor)
+                    }
+                    Spacer()
+                    Text("Video")
                         .lineLimit(1)
                         .padding([.leading, .trailing])
                         .font(.system(size: 17))
                         .foregroundColor(.descriptionFontColor)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(Color.boundColor, lineWidth: 2)
+                        )
+                        .padding(.trailing)
                 }
                 if let linkTitle {
                     Text(linkTitle)
@@ -88,11 +105,38 @@ struct VideoLinkView: View {
     }
 }
 
+
+extension VideoLinkView {
+    var playButton: some View {
+        Button {
+            self.player?.play()
+        } label: {
+            ZStack {
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 50)
+                Circle()
+                    .foregroundColor(.blue)
+                    .frame(width: 40)
+                Image(systemName: "play.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.white)
+                    .frame(width: 17)
+                    .offset(x: 2)
+            }
+        }
+    }
+}
+
+
 struct VideoLinkView_Previews: PreviewProvider {
     static var previews: some View {
         VideoLinkView()
     }
 }
+
+
 
 struct AVPlayerControllerRepresented : UIViewControllerRepresentable {
     var player : AVPlayer
@@ -104,7 +148,5 @@ struct AVPlayerControllerRepresented : UIViewControllerRepresentable {
         return controller
     }
     
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-        
-    }
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {}
 }
