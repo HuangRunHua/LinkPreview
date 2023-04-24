@@ -11,7 +11,9 @@ import UIKit
 
 struct VideoLinkView: View {
     
-    private let demoVideoLink: String = "https://cdn3.dora-video.cn/0bc3giaaaaaa4uakmycek5sfamwdaazaaaaa.f0.mp4"
+//    private let demoVideoLink: String = "https://cdn3.dora-video.cn/0bc3giaaaaaa4uakmycek5sfamwdaazaaaaa.f0.mp4"
+    
+    private let demoVideoLink: String = "https://github.com/HuangRunHua/Mac-Charge-Monitor/raw/main/Mac%20Charge%20Monitor/Resources/macbookair.mov"
     
     @State private var videoResolution: CGFloat? = nil
     @State private var linkTitle: String? = nil
