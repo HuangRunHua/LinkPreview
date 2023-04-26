@@ -15,6 +15,7 @@
 		A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */; };
 		A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F429F00E5500D12BDD /* ColorExtension.swift */; };
 		A957F75B29F8D74D00EA66EF /* LinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F75A29F8D74D00EA66EF /* LinkType.swift */; };
+		A957F75E29F8ED0600EA66EF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F75D29F8ED0600EA66EF /* StringExtension.swift */; };
 		A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */; };
 		A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewView.swift; sourceTree = "<group>"; };
 		A90F06F429F00E5500D12BDD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A957F75A29F8D74D00EA66EF /* LinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkType.swift; sourceTree = "<group>"; };
+		A957F75D29F8ED0600EA66EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLinkView.swift; sourceTree = "<group>"; };
 		A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,12 +70,10 @@
 				A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */,
 				A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */,
 				A90F06F029EFC5D300D12BDD /* TestView.swift */,
-				A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */,
-				A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */,
-				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
-				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
-				A957F75A29F8D74D00EA66EF /* LinkType.swift */,
-				A90F06F429F00E5500D12BDD /* ColorExtension.swift */,
+				A957F76029F8ED6300EA66EF /* Models */,
+				A957F76129F8ED8600EA66EF /* Views */,
+				A957F75F29F8ED4300EA66EF /* Developing */,
+				A957F75C29F8ECEB00EA66EF /* Extensions */,
 				A90F06E329EFBE7400D12BDD /* Assets.xcassets */,
 				A90F06E529EFBE7400D12BDD /* Preview Content */,
 			);
@@ -86,6 +86,41 @@
 				A90F06E629EFBE7400D12BDD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A957F75C29F8ECEB00EA66EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A90F06F429F00E5500D12BDD /* ColorExtension.swift */,
+				A957F75D29F8ED0600EA66EF /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A957F75F29F8ED4300EA66EF /* Developing */ = {
+			isa = PBXGroup;
+			children = (
+				A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */,
+			);
+			path = Developing;
+			sourceTree = "<group>";
+		};
+		A957F76029F8ED6300EA66EF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
+				A957F75A29F8D74D00EA66EF /* LinkType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A957F76129F8ED8600EA66EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */,
+				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A9958C7A29F7AB4200D3D1D9 /* Frameworks */ = {
@@ -172,6 +207,7 @@
 				A957F75B29F8D74D00EA66EF /* LinkType.swift in Sources */,
 				A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */,
 				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
+				A957F75E29F8ED0600EA66EF /* StringExtension.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,
 				A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */,
 				A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */,
