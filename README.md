@@ -24,6 +24,15 @@ There is also a property called `publisher` in a `LinkPreviewView`. I defined th
 
 > Noted that if a web page does not contain the metadata above then the publisher will be the only element to be shown inside a `LinkPreviewView`.
 
+### YouTube Video Support
+If your link points to [YouTube](httpe://youtube.com) and to be able to show correctly using this framework, please check the link contains `=`, for example, the following link is valid:
+
+```bash
+https://www.youtube.com/watch?v=ANn9ibNo9SQ
+```
+
+Behind the `=` is your video ID, make sure there is noly one `=` and your video ID is just behind the `=`.
+
 ## How to Use
 
 Since this project is now not a Swift package, you coud just drag the `LinkPreviewView.swift` , `LinkDataFetcher.swift` and do not forget the color defined inside the `ColorExtension.swift` and `Assets` to your project.
@@ -53,11 +62,35 @@ LinkPreviewView(linkDataFetcher: ldf, tapAction: tapAction(link:publisher:linkTi
 ```swift
 LinkPreviewView(linkDataFetcher: ldf) { link, publisher, linkTitle, linkDescription, linkImage in
 	if let linkDescription {
-			print(linkDescription)
-		}
+		print(linkDescription)
+	}
 }
 ```
 
-## Last But Not Least
+## Websites That Support
+Here is the list that shows which website supports in `LinkPreview`. Noted that not all websites are test.
 
-Noted that the link preview here only support displaying images not videos. You can make contributions too.
+- [x] [Twitter](https://twitter.com)
+- [x] [YouTube](https://youtube.com)
+- [x] [The Economist](https://www.economist.com)
+- [x] [New Scientist](https://www.newscientist.com)
+- [x] [GitHub](https://github.com)
+- [x] [Apple](https://www.apple.com)
+- [x] [The New Yorker](https://www.newyorker.com)
+- [x] [The New York Times](https://www.nytimes.com/)
+- [x] [TIME](https://time.com/)(Picture may not show)
+- [x] [Bloomberg](https://www.bloomberg.com)
+- [x] [WIRED](https://www.wired.com)
+- [x] [Nature](https://www.nature.com/)
+- [x] [Science](https://www.science.org/)
+- [x] [BBC](https://www.bbc.com/)
+- [x] [CNN](https://www.cnn.com)
+- [x] [The Guardian](https://www.theguardian.com)
+- [x] [The Atlantic](https://www.theatlantic.com)
+- [x] [Reuters](https://www.reuters.com/)
+- [x] [The Los Angeles Times](https://www.latimes.com)
+- [ ] [Reader's Digest](https://www.rd.com)
+- [ ] [The Times](https://www.thetimes.co.uk)
+
+## Last But Not Least
+You can make contributions too.
