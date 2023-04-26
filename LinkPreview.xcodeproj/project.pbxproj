@@ -14,9 +14,9 @@
 		A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F029EFC5D300D12BDD /* TestView.swift */; };
 		A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */; };
 		A90F06F529F00E5500D12BDD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F06F429F00E5500D12BDD /* ColorExtension.swift */; };
+		A957F75B29F8D74D00EA66EF /* LinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F75A29F8D74D00EA66EF /* LinkType.swift */; };
 		A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */; };
 		A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */; };
-		A9958C7E29F7B27E00D3D1D9 /* TestYouTubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7D29F7B27E00D3D1D9 /* TestYouTubeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		A90F06F029EFC5D300D12BDD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewView.swift; sourceTree = "<group>"; };
 		A90F06F429F00E5500D12BDD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		A957F75A29F8D74D00EA66EF /* LinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkType.swift; sourceTree = "<group>"; };
 		A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLinkView.swift; sourceTree = "<group>"; };
 		A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideo.swift; sourceTree = "<group>"; };
-		A9958C7D29F7B27E00D3D1D9 /* TestYouTubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestYouTubeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +68,11 @@
 				A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */,
 				A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */,
 				A90F06F029EFC5D300D12BDD /* TestView.swift */,
-				A9958C7D29F7B27E00D3D1D9 /* TestYouTubeView.swift */,
 				A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */,
 				A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */,
 				A90F06F229EFEC0600D12BDD /* LinkPreviewView.swift */,
 				A90F06EE29EFC40200D12BDD /* LinkDataFetcher.swift */,
+				A957F75A29F8D74D00EA66EF /* LinkType.swift */,
 				A90F06F429F00E5500D12BDD /* ColorExtension.swift */,
 				A90F06E329EFBE7400D12BDD /* Assets.xcassets */,
 				A90F06E529EFBE7400D12BDD /* Preview Content */,
@@ -167,9 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9958C7E29F7B27E00D3D1D9 /* TestYouTubeView.swift in Sources */,
 				A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */,
 				A90F06F129EFC5D300D12BDD /* TestView.swift in Sources */,
+				A957F75B29F8D74D00EA66EF /* LinkType.swift in Sources */,
 				A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */,
 				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,

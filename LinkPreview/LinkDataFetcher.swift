@@ -15,7 +15,7 @@ public class LinkDataFetcher {
         self.link = link
     }
     
-    func fetchLinkData(completionBlock: @escaping (String?, String?, String?, String?, Double?, Double?) -> Void) {
+    func fetchLinkData(completionBlock: @escaping (LinkType, String?, String?, String?, String?, Double?, Double?, String?) -> Void) {
         if let url = URL(string: self.link) {
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 if let error {
@@ -26,31 +26,35 @@ public class LinkDataFetcher {
                             var publisher: String? = nil
                             if let linkPublisher = self.link.findPublisher() {
                                 publisher = linkPublisher
-                            }
-                            
-                            var title: String? = nil
-                            if let linkTitle = content.matchURLContent(match: "property=\"og:title\" content=\"") {
-                                title = String(linkTitle)
-                            }
-                            var imageURLPath: String? = nil
-                            var imageWidth: Double? = nil
-                            var imageHeight: Double? = nil
-                            if let linkImage = content.matchURLContent(match: "property=\"og:image\" content=\"") {
-                                imageURLPath = String(linkImage)
-                                if let imageURLPath = imageURLPath {
-                                    if let imageURL = URL(string: imageURLPath) {
-                                        if let imageSize = self.sizeOfImage(at: imageURL) {
-                                            imageWidth = imageSize.width
-                                            imageHeight = imageSize.height
+                                if linkPublisher != "youtube.com" {
+                                    var title: String? = nil
+                                    if let linkTitle = content.matchURLContent(match: "property=\"og:title\" content=\"") {
+                                        title = String(linkTitle)
+                                    }
+                                    var imageURLPath: String? = nil
+                                    var imageWidth: Double? = nil
+                                    var imageHeight: Double? = nil
+                                    if let linkImage = content.matchURLContent(match: "property=\"og:image\" content=\"") {
+                                        imageURLPath = String(linkImage)
+                                        if let imageURLPath = imageURLPath {
+                                            if let imageURL = URL(string: imageURLPath) {
+                                                if let imageSize = self.sizeOfImage(at: imageURL) {
+                                                    imageWidth = imageSize.width
+                                                    imageHeight = imageSize.height
+                                                }
+                                            }
                                         }
                                     }
+                                    var description: String? = nil
+                                    if let linkDescription = content.matchURLContent(match: "property=\"og:description\" content=\"") {
+                                        description = String(linkDescription)
+                                    }
+                                    completionBlock(.normal, publisher, title, imageURLPath, description, imageWidth, imageHeight, nil)
+                                } else {
+                                    let youtubeVideoID = self.paraseYouTubeVideoID(at: self.link)
+                                    completionBlock(.video, nil, nil, nil, nil, nil, nil, youtubeVideoID)
                                 }
                             }
-                            var description: String? = nil
-                            if let linkDescription = content.matchURLContent(match: "property=\"og:description\" content=\"") {
-                                description = String(linkDescription)
-                            }
-                            completionBlock(publisher, title, imageURLPath, description, imageWidth, imageHeight)
                         } else {
                             print("No Content Found")
                         }
@@ -82,6 +86,13 @@ public class LinkDataFetcher {
         } else {
             return nil
         }
+    }
+    
+    private func paraseYouTubeVideoID(at link: String) -> String? {
+        if let equalIndex = link.firstIndex(of: "=") {
+            return String(link[link.index(equalIndex, offsetBy: 1)..<link.endIndex])
+        }
+        return nil
     }
 }
 

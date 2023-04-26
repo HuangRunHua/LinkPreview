@@ -30,27 +30,26 @@ struct TestView: View {
         
     var body: some View {
         ScrollView {
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[0],
-                            tapAction: tapAction(link:publisher:linkTitle:linkDescription:linkImage:))
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[0])
             
             LinkPreviewView(linkDataFetcher: linkDataFetchers[1],
-                            tapAction: openURLAction(link:publisher:linkTitle:linkDescription:linkImage:))
+                            tapAction: openURLAction(linkType:link:publisher:linkTitle:linkDescription:linkImage:youtubeVideoID:))
             
             LinkPreviewView(linkDataFetcher: linkDataFetchers[2])
             
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[3]) { _,_,_,_, imageURL in
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[3]) { _,_,_,_,_, imageURL,_ in
                 if let imageURL {
                     print(imageURL)
                 }
             }
             
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[4]) { _,_,title,_,_ in
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[4]) { _,_,_,title,_,_,_ in
                 if let title {
                     print(title)
                 }
             }
             
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[5]) { link, publisher, linkTitle, linkDescription, linkImage in
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[5]) { linkType, link, publisher, linkTitle, linkDescription, linkImage, youtubeVideoID in
                 if let linkDescription {
                     print(linkDescription)
                 }
@@ -58,19 +57,17 @@ struct TestView: View {
         }
     }
     
-    func tapAction(link: String, publisher: String?, linkTitle: String?, linkDescription: String?, linkImage: String?) {
-        if let publisher {
-            print(publisher)
-        }
-    }
-    
-    func openURLAction(link: String, publisher: String?, linkTitle: String?, linkDescription: String?, linkImage: String?) {
+    func openURLAction(linkType: LinkType?,
+                       link: String,
+                       publisher: String?,
+                       linkTitle: String?,
+                       linkDescription: String?,
+                       linkImage: String?,
+                       youtubeVideoID: String?) {
         if let url = URL(string: link) {
             openURL(url)
         }
     }
-    
-    
 }
 
 struct TestView_Previews: PreviewProvider {
