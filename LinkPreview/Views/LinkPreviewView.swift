@@ -166,7 +166,7 @@ public struct LinkPreviewView: View {
                     }
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (linkType != nil) || (youtubeVideoID != nil))  ? 2: 0)
+                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (youtubeVideoID != nil))  ? 2: 0)
                     )
                     .cornerRadius(10)
                     .padding()
@@ -178,7 +178,7 @@ public struct LinkPreviewView: View {
                     }
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (linkType != nil) || (youtubeVideoID != nil))  ? 2: 0)
+                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (youtubeVideoID != nil))  ? 2: 0)
                     )
                     .cornerRadius(10)
                     .padding()

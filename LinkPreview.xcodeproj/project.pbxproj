@@ -17,7 +17,6 @@
 		A957F75B29F8D74D00EA66EF /* LinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F75A29F8D74D00EA66EF /* LinkType.swift */; };
 		A957F75E29F8ED0600EA66EF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F75D29F8ED0600EA66EF /* StringExtension.swift */; };
 		A957F76529F9078E00EA66EF /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F76429F9078E00EA66EF /* TweetView.swift */; };
-		A957F76729F90D4900EA66EF /* TestTwitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957F76629F90D4900EA66EF /* TestTwitterView.swift */; };
 		A9958C7329F64CEC00D3D1D9 /* VideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */; };
 		A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +35,6 @@
 		A957F75D29F8ED0600EA66EF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A957F76229F8FE1A00EA66EF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		A957F76429F9078E00EA66EF /* TweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
-		A957F76629F90D4900EA66EF /* TestTwitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTwitterView.swift; sourceTree = "<group>"; };
 		A9958C7229F64CEC00D3D1D9 /* VideoLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLinkView.swift; sourceTree = "<group>"; };
 		A9958C7429F7866600D3D1D9 /* YouTubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +73,6 @@
 				A90F06ED29EFBED700D12BDD /* LinkPreview.entitlements */,
 				A90F06DF29EFBE7300D12BDD /* LinkPreviewApp.swift */,
 				A90F06F029EFC5D300D12BDD /* TestView.swift */,
-				A957F76629F90D4900EA66EF /* TestTwitterView.swift */,
 				A957F76029F8ED6300EA66EF /* Models */,
 				A957F76129F8ED8600EA66EF /* Views */,
 				A957F75F29F8ED4300EA66EF /* Developing */,
@@ -216,7 +213,6 @@
 				A9958C7529F7866600D3D1D9 /* YouTubeVideo.swift in Sources */,
 				A90F06EF29EFC40200D12BDD /* LinkDataFetcher.swift in Sources */,
 				A957F75E29F8ED0600EA66EF /* StringExtension.swift in Sources */,
-				A957F76729F90D4900EA66EF /* TestTwitterView.swift in Sources */,
 				A90F06E029EFBE7300D12BDD /* LinkPreviewApp.swift in Sources */,
 				A90F06F329EFEC0600D12BDD /* LinkPreviewView.swift in Sources */,
 				A957F76529F9078E00EA66EF /* TweetView.swift in Sources */,

@@ -18,7 +18,7 @@ struct TestView: View {
         LinkDataFetcher(link: "https://github.com/HuangRunHua/LinkPreview"),
         LinkDataFetcher(link: "https://twitter.com/doraemonChannel/status/1651126046010531840?s=20"),
         LinkDataFetcher(link: "https://www.apple.com.cn"),
-        LinkDataFetcher(link: "https://www.nytimes.com/2023/04/19/business/nyt-sullivan-dominion-first-amendment.html"),
+        LinkDataFetcher(link: "https://www.newyorker.com/news/the-control-of-nature/a-heat-shield-for-the-most-important-ice-on-earth"),
     ]
     
         
@@ -49,7 +49,7 @@ struct TestView: View {
                 }
             }
             
-            LinkPreviewView(linkDataFetcher: linkDataFetchers[5]) { linkType, link, publisher, linkTitle, linkDescription, linkImage, youtubeVideoID in
+            LinkPreviewView(linkDataFetcher: linkDataFetchers[6]) { linkType, link, publisher, linkTitle, linkDescription, linkImage, youtubeVideoID in
                 if let linkDescription {
                     print(linkDescription)
                 }
