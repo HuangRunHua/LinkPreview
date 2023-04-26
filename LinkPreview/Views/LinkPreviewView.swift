@@ -117,66 +117,84 @@ public struct LinkPreviewView: View {
             if let linkType = linkType {
                 switch linkType {
                 case .normal:
-                    if let linkImage = linkImage, let imageWidth = imageWidth, let imageHeight = imageHeight {
-                        AsyncImage(url: URL(string: linkImage)) { phase in
-                            switch phase {
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
-                            case .empty, .failure:
-                                Rectangle()
-                                    .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
-                                    .foregroundColor(.secondary)
-                            @unknown default:
-                                EmptyView()
+                    VStack {
+                        if let linkImage = linkImage, let imageWidth = imageWidth, let imageHeight = imageHeight {
+                            AsyncImage(url: URL(string: linkImage)) { phase in
+                                switch phase {
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
+                                case .empty, .failure:
+                                    Rectangle()
+                                        .aspectRatio(imageWidth/imageHeight, contentMode: .fit)
+                                        .foregroundColor(.secondary)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 0)
+                                    .stroke(Color.boundColor, lineWidth: 2)
+                            )
+                        }
+                        VStack(alignment: .leading, spacing: 5) {
+                            if let publisher {
+                                Text(publisher)
+                                    .lineLimit(1)
+                                    .padding([.leading, .trailing])
+                                    .font(.system(size: 17))
+                                    .foregroundColor(.descriptionFontColor)
+                            }
+                            
+                            if let linkTitle {
+                                Text(linkTitle)
+                                    .lineLimit(1)
+                                    .padding([.leading, .trailing])
+                            }
+                            if let linkDescription {
+                                Text(linkDescription)
+                                    .foregroundColor(.descriptionFontColor)
+                                    .padding([.leading, .trailing])
+                                    .lineLimit(2)
                             }
                         }
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 0)
-                                .stroke(Color.boundColor, lineWidth: 2)
-                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding([.bottom])
+                        .padding(.top, 10)
+                        .background(Color.linkBackgroundColor)
                     }
-                    VStack(alignment: .leading, spacing: 5) {
-                        if let publisher {
-                            Text(publisher)
-                                .lineLimit(1)
-                                .padding([.leading, .trailing])
-                                .font(.system(size: 17))
-                                .foregroundColor(.descriptionFontColor)
-                        }
-                        
-                        if let linkTitle {
-                            Text(linkTitle)
-                                .lineLimit(1)
-                                .padding([.leading, .trailing])
-                        }
-                        if let linkDescription {
-                            Text(linkDescription)
-                                .foregroundColor(.descriptionFontColor)
-                                .padding([.leading, .trailing])
-                                .lineLimit(2)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.bottom])
-                    .padding(.top, 10)
-                    .background(Color.linkBackgroundColor)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (linkType != nil) || (youtubeVideoID != nil))  ? 2: 0)
+                    )
+                    .cornerRadius(10)
+                    .padding()
                 case .video:
-                    if let youtubeVideoID = self.youtubeVideoID {
-                        YouTubeVideoView(youtubeVideoID: youtubeVideoID)
+                    VStack {
+                        if let youtubeVideoID = self.youtubeVideoID {
+                            YouTubeVideoView(youtubeVideoID: youtubeVideoID)
+                        }
+                    }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (linkType != nil) || (youtubeVideoID != nil))  ? 2: 0)
+                    )
+                    .cornerRadius(10)
+                    .padding()
+                    
+                case .tweet:
+                    if let tweetURL = URL(string: linkDataFetcher.link) {
+                        TweetView(previewURL: tweetURL)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
                     }
                 }
             }
             
         }
         .frame(maxWidth: .infinity)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.boundColor, lineWidth: ((publisher != nil) || (linkTitle != nil) || (linkImage != nil) || (linkDescription != nil) || (linkType != nil) || (youtubeVideoID != nil))  ? 2: 0)
-        )
-        .cornerRadius(10)
-        .padding()
+        
         .onAppear {
             linkDataFetcher.fetchLinkData(completionBlock: { linkType, publisher, title, imageURL, description, imageWidth, imageHeight, youtubeVideoID  in
                 self.publisher = publisher
@@ -200,8 +218,7 @@ public struct LinkPreviewView: View {
 struct LinkPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://www.youtube.com/watch?v=ANn9ibNo9SQ"))
-            LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://www.economist.com/leaders/2023/04/13/the-lessons-from-americas-astonishing-economic-record"))
+            LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://twitter.com/ShouldHaveCat/status/1650864348229931012?s=20"))
         }
     }
 }

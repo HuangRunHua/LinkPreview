@@ -26,7 +26,12 @@ public class LinkDataFetcher {
                             var publisher: String? = nil
                             if let linkPublisher = self.link.findPublisher() {
                                 publisher = linkPublisher
-                                if linkPublisher != "youtube.com" {
+                                if linkPublisher == "youtube.com" {
+                                    let youtubeVideoID = self.paraseYouTubeVideoID(at: self.link)
+                                    completionBlock(.video, nil, nil, nil, nil, nil, nil, youtubeVideoID)
+                                } else if linkPublisher == "twitter.com" {
+                                    completionBlock(.tweet, nil, nil, nil, nil, nil, nil, nil)
+                                } else {
                                     var title: String? = nil
                                     if let linkTitle = content.matchURLContent(match: "property=\"og:title\" content=\"") {
                                         title = String(linkTitle)
@@ -50,9 +55,6 @@ public class LinkDataFetcher {
                                         description = String(linkDescription)
                                     }
                                     completionBlock(.normal, publisher, title, imageURLPath, description, imageWidth, imageHeight, nil)
-                                } else {
-                                    let youtubeVideoID = self.paraseYouTubeVideoID(at: self.link)
-                                    completionBlock(.video, nil, nil, nil, nil, nil, nil, youtubeVideoID)
                                 }
                             }
                         } else {
