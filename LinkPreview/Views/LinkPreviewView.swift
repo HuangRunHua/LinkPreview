@@ -218,7 +218,7 @@ public struct LinkPreviewView: View {
 struct LinkPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://twitter.com/ShouldHaveCat/status/1650864348229931012?s=20"))
+            LinkPreviewView(linkDataFetcher: LinkDataFetcher(link:"https://www.politico.eu/article/eu-schemes-up-sweeteners-to-woo-countries-from-russia-and-china/"))
         }
     }
 }
